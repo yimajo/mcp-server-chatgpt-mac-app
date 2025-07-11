@@ -1,0 +1,10 @@
+{
+  "mcpServers": {
+    "chatGPTOnMac": {
+      "command": "node",
+      "args": ["./build/index.js"],
+      "cwd": ".",
+      "env": {}
+    }
+  }
+}

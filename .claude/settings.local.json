@@ -1,0 +1,11 @@
+{
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": [
+    "chatgpt"
+  ],
+  "permissions": {
+    "allow": [
+      "mcp__chatgptOnMac__run_applescript"
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "name": "mcp-server-chatgpt-mac-app",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "mcp-server-chatgpt-mac-app": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && chmod +x build/index.js",
+    "start": "node build/index.js",
+    "prepublishOnly": "pnpm run build",
+    "format": "pnpx biome format --write .",
+    "lint": "pnpx biome lint .",
+    "check": "pnpx biome check ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.4.1",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.15.1",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@types/node": "^24.0.13",
+    "typescript": "^5.8.3"
+  }
+}
