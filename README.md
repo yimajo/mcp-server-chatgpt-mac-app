@@ -15,6 +15,8 @@ and this project is a TypeScript implementation of it.
 ### build
 
 ```bash
+git clone https://github.com/yimajo/mcp-server-chatgpt-mac-app.git
+cd mcp-server-chatgpt-mac-app
 pnpm install
 pnpm build
 ```
