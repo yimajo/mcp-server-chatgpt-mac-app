@@ -1,10 +1,4 @@
 {
-  "permissions": {
-    "allow": [
-      "mcp__chatGPTOnMac__ask_via_shortcuts_cli",
-      "Bash(pnpm add:*)"
-    ]
-  },
   "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "chatGPTOnMac"
