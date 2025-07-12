@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js"
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
-import { spawnSync } from "node:child_process"
 import { randomUUID } from "node:crypto"
 import { unlinkSync, writeFileSync } from "node:fs"
 import { tmpdir } from "node:os"
 import { join } from "node:path"
 import { z } from "zod"
+import { askChatGPT } from "./chatgpt.js"
 
 // You need to create a shortcut in the macOS Shortcuts.app with this name.
 const CHATGPT_SHORTCUT_NAME = "Ask ChatGPT on Mac"
@@ -19,26 +19,6 @@ const server = new McpServer({
 })
 
 // MARK: - ChatGPT via Shortcuts (CLI)
-
-type AskChatGPTResult =
-  | { readonly ok: true; output: string }
-  | { readonly ok: false; error: string }
-
-function askChatGPT(inputFilePath: string): AskChatGPTResult {
-  try {
-    const res = spawnSync(
-      "shortcuts",
-      ["run", CHATGPT_SHORTCUT_NAME, "-i", inputFilePath],
-      { encoding: "utf8" },
-    )
-    if (res.status === 0) {
-      return { ok: true, output: res.stdout.trim() }
-    }
-    return { ok: false, error: res.stderr.trim() }
-  } catch (error) {
-    return { ok: false, error: String(error) }
-  }
-}
 
 // MARK: - Server Tool
 
@@ -56,7 +36,7 @@ server.tool(
     writeFileSync(inputFilePath, prompt, "utf8")
 
     try {
-      const res = askChatGPT(inputFilePath)
+      const res = askChatGPT(CHATGPT_SHORTCUT_NAME, inputFilePath)
       if (res.ok) {
         return {
           content: [
