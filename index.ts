@@ -15,7 +15,7 @@ const CHATGPT_SHORTCUT_NAME = "Ask ChatGPT on Mac"
 
 const server = new McpServer({
   name: "mcp-server-chatgpt-mac-app",
-  version: "0.0.1",
+  version: "0.1.0",
 })
 
 // MARK: - ChatGPT via Shortcuts (CLI)
